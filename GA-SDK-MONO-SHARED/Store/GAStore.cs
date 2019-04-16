@@ -1,11 +1,15 @@
 ﻿using System;
 #if MONO
+#if SQLITEPCL
+using Mono.Data.Sqlite;
+#else
 using SqliteConnection = System.Data.SQLite.SQLiteConnection;
 using SqliteTransaction = System.Data.SQLite.SQLiteTransaction;
 using SqliteCommand = System.Data.SQLite.SQLiteCommand;
 using SqliteDataReader = System.Data.SQLite.SQLiteDataReader;
 using SqliteException = System.Data.SQLite.SQLiteException;
 using SqliteConnectionStringBuilder = System.Data.SQLite.SQLiteConnectionStringBuilder;
+#endif
 #elif WINDOWS_WSA || !UNITY || WINDOWS_UWP
 using Microsoft.Data.Sqlite;
 using System.Reflection;
